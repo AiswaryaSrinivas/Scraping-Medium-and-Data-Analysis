@@ -4,7 +4,7 @@ Created on Sat Apr 07 23:42:49 2018
 
 @author: Aiswarya
 
-This has to read all the json 
+This has to read all the json files scrapped and extract the information about each post, author and publisher (if any)
 
 """
 import json
@@ -215,7 +215,7 @@ def processPosts(data_json,searchString,dateScrapped):
             
 
 '''
-References tag contains infor about the user and the Collections
+References tag contains information about the user and the Collections
 '''
 
 def processReferences(data_json,searchString,dateScrapped):
@@ -325,7 +325,9 @@ def processReferences(data_json,searchString,dateScrapped):
                 
                 
                 
-
+'''
+change path to folder where the scrapped json files are stored
+'''
 path='C:\Users\Aiswarya\DataScienceArena\Web Scraping\medium_scrapper\medium_search_dataScience\scrapped\\'
 
 ReadData(path)
