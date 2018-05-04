@@ -8,7 +8,8 @@ There are two scrappers
 This scrapper searches Medium for articles based on a user inputted search string. 
 
 To run the scrapper, use
-# scrapy runspider -a searchString=searchTerm medium_scrapper_post.py
+
+scrapy runspider -a searchString=searchTerm medium_scrapper_post.py
 
 2. medium_scrapper_tag_archive.py
 This scraper get all Articles for a particular tag slug in a given date range
@@ -17,7 +18,7 @@ Note : If tag is Data Science, then pass tag as 'data-science' in tagSlug Parame
 To run the scrapper, use
 
 
-# scrapy runspider -a tagSlug='tagSlug' -a start_date=YYYYmmdd -a end_date=YYYYmmdd medium_scrapper_tag_archive.py
+scrapy runspider -a tagSlug='tagSlug' -a start_date=YYYYmmdd -a end_date=YYYYmmdd medium_scrapper_tag_archive.py
 
 
 # Medium Posts Data Extraction
