@@ -24,3 +24,4 @@ scrapy runspider -a tagSlug='tagSlug' -a start_date=YYYYmmdd -a end_date=YYYYmmd
 # Medium Posts Data Extraction
 
 The file DataExtraction.py extracts information from the json files scrapped by the scrapper medium_scrapper_post.py. 
+To extract information from json files scrapped by medium_scrapper_tag_archive.py (scrapping from tags archive) then use DataExtraction
