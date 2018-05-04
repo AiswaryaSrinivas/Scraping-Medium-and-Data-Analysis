@@ -4,7 +4,8 @@ Created on Mon Apr 16 22:51:19 2018
 
 @author: Aiswarya
 
-Extract Data from json, and write to respective tables
+Extract Data from json files created using medium_scrapper_tag_archive.py
+
 """
 
 #from scrapperFunctions import *
@@ -228,42 +229,7 @@ def ReadData(path):
     posts.to_csv(path+"Posts_ByTag_"+datetime.datetime.now().strftime("%Y%m%d_%H%M%S")+".csv",index=False,encoding='utf-8')
     tags.to_csv(path+"Tags_ByTag_"+datetime.datetime.now().strftime("%Y%m%d_%H%M%S")+".csv",index=False,encoding='utf-8')
     users.to_csv(path+"Users_ByTag_"+datetime.datetime.now().strftime("%Y%m%d_%H%M%S")+".csv",index=False,encoding='utf-8')
-    collections.to_csv(path+"Collections_ByTag_"+datetime.datetime.now().strftime("%Y%m%d_%H%M%S")+".csv",index=False,encoding='utf-8')
-
-
-
-'''
-Create a function to process Topics Info from the data.
-
-
-'''
-def processTopics(data):
-    print("Updating topic Info")
-    successStatus=isRequestSuccess(data)
-    print(hasTopicTag(data))    
-    print(successStatus)
-    if successStatus== True and hasTopicTag(data)==True:
-        data=data["payload"]["topic"]
-        topicId=data["topicId"]
-        topicSlug=data["slug"]
-        createdAt=data["createdAt"]
-        topicName=data["name"]
-        isFollowing=data["isFollowing"]
-        #print str(createdAt)
-        #check if topic exists, if not insert into TopicsInformation table
-        processTopicInfo(topicId,topicSlug,"'"+str(createdAt)+"'",topicName,isFollowing)
-        
-        #Now check if related topics tag exists
-        if "relatedTopics" in data:
-            relatedTopics=data["relatedTopics"]
-            for relatedTopic in relatedTopics:
-                processTopicInfo(relatedTopic["topicId"],relatedTopic["slug"],"'"+str(relatedTopic["createdAt"])+"'",
-                                 relatedTopic["name"],"")
-        
-        print("Finished updating Topic Info")
-        
-        
-    
+    collections.to_csv(path+"Collections_ByTag_"+datetime.datetime.now().strftime("%Y%m%d_%H%M%S")+".csv",index=False,encoding='utf-8')    
     
 def processTopicPost(data):
     
@@ -408,11 +374,6 @@ def processReferences(data_json,searchTag,dateScrapped):
 
 
 
-'''  
-with codecs.open("medium_topic_data-science20180416_223018.json",'r','utf-8') as infile:
-    data=json.load(infile)
-processTopics(data)
-'''
-#processTopicPost(data)
+# Read Data by giving folder path
 
 ReadData("20180504\\")
